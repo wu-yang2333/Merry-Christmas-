@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣诞快乐</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <audio loop id="audioPlayer">
+        <source src="Jingle Bells .mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <img src="images\圣诞树.jpg" alt="圣诞树" class="responsive-img">
+    <div class="christmas-card">
+        <h1>圣诞快乐！</h1>
+        <p>亲爱的姐姐，愿这个圣诞节给你们带来无尽的快乐和温馨。</p>
+        <div class="music-container">
+            <img src="images\图1.png" class="music-player" id="musicPlayer" onclick="toggleMusic()" >
+        </div>
+        <p>愿你的每一天都像圣诞树一样光彩夺目，充满希望和喜悦。</p>
+    </div>
+    <script>
+        function toggleMusic() {
+            var audio = document.getElementById('audioPlayer');
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('musicPlayer').src = 'images\图1.png';
+            } else {
+                audio.pause();
+                document.getElementById('musicPlayer').src = 'images\图2.png';
+            }
+        }
+
+        function createSnowflake() {
+            varflake = document.createElement('div');
+            varflake.classList.add('snowflake');
+            varflake.style.left = Math.random() * window.innerWidth + 'px';
+            varflake.style.width = Math.random() * 20 + 5 + 'px';
+            varflake.style.height = varflake.style.width;
+            varflake.style.animationDuration = Math.random() * 5 + 3 + 's';
+            varflake.style.animationName = 'fall';
+            document.body.appendChild(varflake);
+
+            varflake.addEventListener('animationend', function () {
+                this.remove();
+            });
+        }
+
+        setInterval(createSnowflake, 500);
+    </script>
+</body>
+
+</html>
